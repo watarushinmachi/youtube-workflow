@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>YouTube制作チーム 業務フロー & 改善提案</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 32px;
+    color: #222;
+  }
+  .sheet {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tag {
+    display: inline-block;
+    background: #c4302b;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 10px;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 26px;
+    margin: 0 0 6px;
+    border-bottom: 3px solid #222;
+    padding-bottom: 10px;
+  }
+  .members {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .legend {
+    display: flex;
+    gap: 12px;
+    margin: 20px 0 32px;
+    flex-wrap: wrap;
+  }
+  .legend div {
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: bold;
+    border: 1px solid;
+  }
+  .lg-human  { background:#e3edfb; border-color:#5a8fd6; color:#1f4e99; }
+  .lg-ai     { background:#e1f4e4; border-color:#5fb371; color:#1e6b2f; }
+  .lg-mix    { background:#fff3d9; border-color:#e6b34a; color:#8a5a00; }
+  .lg-fix    { background:#fbe1e1; border-color:#d65a5a; color:#8a1f1f; }
+
+  .flows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .flow h2 {
+    font-size: 17px;
+    margin: 0 0 14px;
+    padding: 10px 14px;
+    background: #222;
+    color: #fff;
+    text-align: center;
+  }
+  .flow.ideal h2 { background: #c4302b; }
+
+  .step {
+    border: 1px solid;
+    padding: 10px 14px;
+  }
+  .step .num {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #888;
+    width: 22px;
+    height: 22px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    margin-right: 8px;
+    border-radius: 50%;
+  }
+  .step .label { font-weight: bold; font-size: 13px; }
+  .step .owner-tag {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #888;
+    color: #333;
+    font-size: 10px;
+    padding: 1px 6px;
+    margin-left: 6px;
+    border-radius: 3px;
+    font-weight: normal;
+    vertical-align: middle;
+  }
+  .step .note  { font-size: 11px; color: #444; margin-top: 4px; padding-left: 30px; }
+  .arrow {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin: 2px 0;
+  }
+  .human { background:#e3edfb; border-color:#5a8fd6; }
+  .ai    { background:#e1f4e4; border-color:#5fb371; }
+  .mix   { background:#fff3d9; border-color:#e6b34a; }
+  .fix   { background:#fbe1e1; border-color:#d65a5a; }
+
+  .qa {
+    margin-top: 40px;
+    border-top: 2px solid #222;
+    padding-top: 20px;
+  }
+  .qa h2, .improve h2 {
+    font-size: 18px;
+    margin: 0 0 16px;
+  }
+  .qa table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .qa th, .qa td {
+    border: 1px solid #ccc;
+    padding: 12px 14px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 13px;
+  }
+  .qa th {
+    background: #f0f0f0;
+    width: 220px;
+    white-space: nowrap;
+  }
+  .improve {
+    margin-top: 36px;
+    border-top: 2px solid #222;
+    padding-top: 20px;
+  }
+  .improve ol {
+    padding-left: 20px;
+  }
+  .improve li {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .improve li b { color: #c4302b; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <span class="tag">コミュニティマーケティング部</span>
+    <h1>YouTube制作チーム 業務フロー & 改善提案</h1>
+    <div class="members">新町 / 内藤 / 鈴木 / 藤井 / 一柳（5名）</div>
+
+    <div class="legend">
+      <div class="lg-human">■ 人がやる</div>
+      <div class="lg-ai">■ AIに任せる</div>
+      <div class="lg-mix">■ 人＋AI</div>
+      <div class="lg-fix">■ 要改善！</div>
+    </div>
+
+    <div class="flows">
+      <!-- ============ 現状フロー ============ -->
+      <div class="flow current">
+        <h2>現状フロー（AS-IS）</h2>
+
+        <div class="step human"><span class="num">1</span><span class="label">人材チームから対談者共有</span><span class="owner-tag">担当：人材チーム</span>
+          <div class="note">人材チームから候補者リストを共有</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">2</span><span class="label">対談者ピックアップ判断</span><span class="owner-tag">担当：新町・内藤</span>
+          <div class="note">YouTubeにふさわしい人を最終選定</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">3</span><span class="label">日程調整</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">対談者と日程をすり合わせ</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">4</span><span class="label">台本制作</span><span class="owner-tag">担当：内藤・鈴木 / 最終チェック：新町</span>
+          <div class="note">人材チームのヒアリング内容をもとにAI生成、人が最終チェック</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">5</span><span class="label">台本事前共有</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">対談者へ台本を送付</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">6</span><span class="label">対談撮影</span><span class="owner-tag">担当：藤井</span>
+          <div class="note">対談本番の実施</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">7</span><span class="label">素材提供</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">撮影素材を編集者に受け渡し</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">8</span><span class="label">管理シート記入</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">納期・投稿日を手動で記入</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">9</span><span class="label">編集者アサイン</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">編集者を選定して依頼</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">10</span><span class="label">編集 + サムネイル作成</span><span class="owner-tag">担当：一柳 / 最終チェック：新町</span>
+          <div class="note">編集者作業＋AI補助、人が最終チェック</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">11</span><span class="label">投稿</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">YouTubeへアップロード</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">12</span><span class="label">分析</span><span class="owner-tag">担当：内藤・新町</span>
+          <div class="note">数値確認・次回への振り返り</div>
+        </div>
+      </div>
+
+      <!-- ============ 理想フロー ============ -->
+      <div class="flow ideal">
+        <h2>理想フロー（TO-BE）</h2>
+
+        <div class="step ai"><span class="num">1</span><span class="label">人材チームから対談者共有</span><span class="owner-tag">担当：人材チーム</span>
+          <div class="note">候補者情報をAIが収集・要約して自動共有</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">2</span><span class="label">対談者ピックアップ判断</span><span class="owner-tag">担当：新町・内藤</span>
+          <div class="note">品質に関わる人選は人が最終判断</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">3</span><span class="label">日程調整</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">AIが候補日提示・調整、人が確定</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">4</span><span class="label">台本制作</span><span class="owner-tag">担当：内藤・鈴木 / 最終チェック：新町</span>
+          <div class="note">AIが台本生成、クオリティは人が最終チェック</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step ai"><span class="num">5</span><span class="label">台本事前共有</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">対談者への送付・リマインドをAIが自動化</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step human"><span class="num">6</span><span class="label">対談撮影</span><span class="owner-tag">担当：藤井</span>
+          <div class="note">対談本番＝人がやる</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">7</span><span class="label">素材提供</span><span class="owner-tag">担当：内藤</span>
+          <div class="note">アップロード・受け渡しをAI＋人で効率化</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">8</span><span class="label">管理シート記入</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">納期・投稿日をAIが自動入力、人がチェック</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">9</span><span class="label">編集者アサイン</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">空き状況からAIが提案、人が確定</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">10</span><span class="label">編集 + サムネイル作成</span><span class="owner-tag">担当：一柳 / 最終チェック：新町</span>
+          <div class="note">AIで叩き台、クオリティは人が最終チェック</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">11</span><span class="label">投稿</span><span class="owner-tag">担当：鈴木</span>
+          <div class="note">予約投稿・概要欄生成をAIが、最終確認は人</div>
+        </div>
+        <div class="arrow">↓</div>
+
+        <div class="step mix"><span class="num">12</span><span class="label">分析</span><span class="owner-tag">担当：内藤・新町</span>
+          <div class="note">数値レポートはAIが自動生成、戦略判断は人</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 Questions -->
+    <div class="qa">
+      <h2>4つの問いへの回答</h2>
+      <table>
+        <tr>
+          <th>Q1　人が判断すべきところは？</th>
+          <td>YouTubeの<b>品質に関わる部分</b>はすべて人。具体的には──人選の選定／台本のクオリティ／編集のクオリティ／サムネイルのクオリティ／出た数字に対する戦略の最終意思決定。</td>
+        </tr>
+        <tr>
+          <th>Q2　どこをAIに任せて、どこは人？</th>
+          <td>基本方針は「<b>オペレーションはAI、品質は人</b>」。シート記入・素材提供・候補者情報まとめなど品質に関わらない作業はAIに任せる。台本・編集・サムネ・分析は<b>叩き台はAI、最終チェックは人</b>。</td>
+        </tr>
+        <tr>
+          <th>Q3　今のやり方ベスト？</th>
+          <td>今のやり方は一旦ベスト。ただし上記の通り、オペレーション工程はまだ人が抱えているのでAI化する余地が大きい。</td>
+        </tr>
+        <tr>
+          <th>Q4　フロー理解してるメンバーは？</th>
+          <td>全体把握は<b>新町だけ</b>。各部の担当者は自分の担当範囲のみ把握している状態。各部担当者全員が全体像を持つ必要がある。</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Improvements -->
+    <div class="improve">
+      <h2>改善提案</h2>
+      <ol>
+        <li><b>オペレーション工程の一括AI化</b> ── 候補者共有・台本共有・素材提供・管理シート記入・編集者アサイン・投稿・分析レポートをAI化。品質に関わらない作業から人を解放する。</li>
+        <li><b>品質工程は「AI叩き台 + 人の最終チェック」体制に統一</b> ── 台本／編集／サムネ／戦略判断は、AIで生成スピードを上げつつ、最終クオリティは必ず人が担保する。</li>
+        <li><b>全体フローの可視化と共有</b> ── 新町に集中している全体把握を解消し、各部担当者が同じフロー図を見られる状態にする。誰が抜けても回る体制へ。</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
