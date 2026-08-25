@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>新規事業企画書｜LINEスタンプ収益化</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 32px;
+    color: #222;
+  }
+  .sheet {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px 48px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .tag {
+    display: inline-block;
+    background: #06c755;
+    color: #fff;
+    font-size: 11px;
+    padding: 3px 10px;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 26px;
+    margin: 0 0 6px;
+    border-bottom: 3px solid #222;
+    padding-bottom: 10px;
+  }
+  .members { color: #666; font-size: 13px; margin-bottom: 28px; }
+
+  section { margin-top: 36px; border-top: 2px solid #222; padding-top: 20px; }
+  section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  h2 { font-size: 18px; margin: 0 0 14px; }
+  h2 .n {
+    display: inline-block; background: #222; color: #fff;
+    font-size: 12px; padding: 2px 8px; margin-right: 8px; vertical-align: middle;
+  }
+  h3 { font-size: 14px; margin: 20px 0 8px; }
+  p { font-size: 13px; line-height: 1.7; margin: 0 0 10px; }
+
+  .lede {
+    background: #f0f8f2; border-left: 4px solid #06c755;
+    padding: 14px 18px; font-size: 13px; line-height: 1.8;
+  }
+  .lede b { color: #06803a; }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  th, td {
+    border: 1px solid #ccc; padding: 10px 12px;
+    text-align: left; vertical-align: top; font-size: 13px; line-height: 1.6;
+  }
+  th { background: #f0f0f0; white-space: nowrap; }
+  td.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .hl { background: #fff8e1; font-weight: bold; }
+
+  .lines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .line { border: 1px solid; padding: 14px 16px; }
+  .line h3 { margin: 0 0 4px; font-size: 15px; }
+  .line .rank { font-size: 10px; padding: 2px 8px; border: 1px solid; display: inline-block; margin-bottom: 8px; background: #fff; }
+  .line ul { padding-left: 18px; margin: 8px 0 0; }
+  .line li { font-size: 12px; line-height: 1.6; margin-bottom: 5px; }
+  .line-a { background: #fbe1e1; border-color: #d65a5a; }
+  .line-b { background: #e3edfb; border-color: #5a8fd6; }
+  .line-c { background: #e1f4e4; border-color: #5fb371; }
+
+  .legend { display: flex; gap: 12px; margin: 0 0 18px; flex-wrap: wrap; }
+  .legend div { padding: 6px 14px; font-size: 12px; font-weight: bold; border: 1px solid; }
+  .lg-human { background:#e3edfb; border-color:#5a8fd6; color:#1f4e99; }
+  .lg-ai    { background:#e1f4e4; border-color:#5fb371; color:#1e6b2f; }
+  .lg-mix   { background:#fff3d9; border-color:#e6b34a; color:#8a5a00; }
+  .lg-ng    { background:#fbe1e1; border-color:#d65a5a; color:#8a1f1f; }
+
+  .flow { max-width: 720px; }
+  .step { border: 1px solid; padding: 10px 14px; }
+  .step .num {
+    display: inline-block; background: #fff; border: 1px solid #888;
+    width: 22px; height: 22px; line-height: 20px; text-align: center;
+    font-size: 11px; font-weight: bold; margin-right: 8px; border-radius: 50%;
+  }
+  .step .label { font-weight: bold; font-size: 13px; }
+  .step .owner-tag {
+    display: inline-block; background: #fff; border: 1px solid #888; color: #333;
+    font-size: 10px; padding: 1px 6px; margin-left: 6px; border-radius: 3px;
+    font-weight: normal; vertical-align: middle;
+  }
+  .step .note { font-size: 11px; color: #444; margin-top: 4px; padding-left: 30px; }
+  .arrow { text-align: center; color: #888; font-size: 13px; margin: 2px 0; }
+  .human { background:#e3edfb; border-color:#5a8fd6; }
+  .ai    { background:#e1f4e4; border-color:#5fb371; }
+  .mix   { background:#fff3d9; border-color:#e6b34a; }
+  .ng    { background:#fbe1e1; border-color:#d65a5a; }
+
+  .stop { border: 2px solid #d65a5a; background: #fbe1e1; padding: 14px 18px; font-size: 13px; line-height: 1.8; }
+  .stop b { color: #8a1f1f; }
+
+  ol.roadmap { padding-left: 20px; }
+  ol.roadmap li { font-size: 13px; margin-bottom: 10px; line-height: 1.7; }
+  ol.roadmap li b { color: #06803a; }
+
+  .sources { font-size: 11px; color: #666; line-height: 1.8; }
+  .sources a { color: #06803a; }
+  .memo { font-size: 11px; color: #777; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <span class="tag">新規事業</span>
+    <h1>LINEスタンプ収益化 事業企画書</h1>
+    <div class="members">作成：コミュニティマーケティング部 ／ 想定リソース：既存YouTube制作チーム（5名）＋外部イラストレーター</div>
+
+    <!-- ============ 0. 結論 ============ -->
+    <section>
+      <h2><span class="n">0</span>結論</h2>
+      <div class="lede">
+        <b>① スタンプを「作って売るだけ」では稼げない。</b>1セット売れてクリエイター取り分は約42円。月10万円を出すには月2,400セット売る必要がある。<br>
+        <b>② 勝ち筋は「スタンプを売る」ではなく「スタンプを作れる会社になる」こと。</b>本命は法人受託（ラインA）。既存のYouTube案件クライアントにアップセルできるのが我々の唯一の非対称優位。<br>
+        <b>③ まず90日。</b>自社スタンプで審査〜販売を1周して制作原価を実測し、その実績を営業材料に法人案件を1件取る。数字を見て継続 / 縮小を判断する（撤退基準は §6）。
+      </div>
+    </section>
+
+    <!-- ============ 1. 数字の現実 ============ -->
+    <section>
+      <h2><span class="n">1</span>数字の現実（ここを外すと企画が成立しない）</h2>
+      <table>
+        <tr><th>項目</th><th>内容</th></tr>
+        <tr>
+          <th>分配金の計算式</th>
+          <td>（売上総額 − プラットフォーム手数料30%）× 50% ＝ <b>実質、売上の約35%</b>がクリエイター取り分</td>
+        </tr>
+        <tr>
+          <th>1セットあたり<br>（120円スタンプ）</th>
+          <td class="hl">LINE STORE 経由：約42円 ／ アプリ内スタンプショップ経由：約31円<br>
+          <span class="memo">※購入経路で決済手数料が異なるため差が出る。導線はLINE STOREに寄せたほうが取り分が大きい。</span></td>
+        </tr>
+        <tr>
+          <th>送金条件</th>
+          <td>分配額が <b>1,000円以上</b> で送金申請可（毎月1〜10日頃は集計期間のため申請不可）。2025年以降は銀行送金のみ。<br>
+          個人事業形態で年間の送金申請額が5万円を超える場合はマイナンバー提出が必要。</td>
+        </tr>
+        <tr>
+          <th>スタンププレミアム<br>（サブスク）</th>
+          <td>2026年7月の改定で「サブスク登録者数 × 所定単価12円（税別）× 送信割合」方式へ変更。<br>
+          <b>売れなくても“使われれば”入る</b>のが特徴だが単価は極小。数を出す戦略と相性が良い＝ラインCの主戦場。</td>
+        </tr>
+        <tr>
+          <th>月10万円の必要販売数</th>
+          <td class="hl">100,000 ÷ 42 ≒ <b>2,381セット／月</b>（LINE STORE経由・120円換算）</td>
+        </tr>
+      </table>
+      <p class="memo">※金額・規約は変動する（現に2026年7月にプレミアムの計算式が変わっている）。着手時に公式の利用規約／ヘルプで再確認すること。</p>
+
+      <h3>損益分岐の目安</h3>
+      <table>
+        <tr><th>シナリオ</th><th>前提</th><th>月次の取り分</th><th>評価</th></tr>
+        <tr>
+          <td>自社スタンプ 10セット<br>ロングテール</td>
+          <td>1セットあたり月5個売れる（無名クリエイターの現実的な水準）</td>
+          <td class="num">約 2,100円</td>
+          <td>お小遣いにもならない。<b>単体では事業にならない</b></td>
+        </tr>
+        <tr>
+          <td>チャンネル送客</td>
+          <td>登録者の0.5%が1セット購入／初月</td>
+          <td class="num">登録者1万人で<br>約 2,100円</td>
+          <td>初速は出るが単発。IP育成の入口として見る</td>
+        </tr>
+        <tr class="hl">
+          <td>法人受託 1件</td>
+          <td>制作費20万円／制作工数 実働5人日</td>
+          <td class="num">粗利 約 15万円</td>
+          <td><b>自社スタンプ約3,500セット分。桁が違う</b></td>
+        </tr>
+      </table>
+      <p class="memo">※法人受託の単価20万円は市場相場からの仮置き。初回は実績づくり優先で下げてよいが、原価（工数）は必ず実測して記録する。</p>
+    </section>
+
+    <!-- ============ 2. 収益ライン ============ -->
+    <section>
+      <h2><span class="n">2</span>3つの収益ライン</h2>
+      <div class="lines">
+        <div class="line line-a">
+          <span class="rank">本命 ／ 収益の8割</span>
+          <h3>A. 法人・クライアント受託</h3>
+          <ul>
+            <li>企業のLINE公式アカウント友だち追加施策として、スタンプ制作を請け負う</li>
+            <li>営業先＝<b>既存のYouTube案件クライアント</b>。新規開拓ゼロで打診できる</li>
+            <li>「動画＋スタンプ」でSNS施策をまとめて受けられる＝提案の幅が広がる</li>
+            <li>1セット8点なら制作は1〜2週間。単価15〜30万円</li>
+            <li>リスク：労働集約。テンプレ化しないと人が死ぬ</li>
+          </ul>
+        </div>
+        <div class="line line-b">
+          <span class="rank">中期 ／ IP育成</span>
+          <h3>B. 自社チャンネル送客</h3>
+          <ul>
+            <li>YouTube視聴者・LINE公式の友だちへ直接販売</li>
+            <li><b>既存トラフィックが唯一の資産</b>。初速が出るのはここだけ</li>
+            <li>導線：動画の締め・概要欄・LINE配信・コミュニティ投稿</li>
+            <li>売れるかよりも「キャラが立つか」を見る。立てばグッズ・案件へ展開できる</li>
+            <li>リスク：売上は単発で終わる。IP化しなければ意味がない</li>
+          </ul>
+        </div>
+        <div class="line line-c">
+          <span class="rank">実験枠 ／ 上限あり</span>
+          <h3>C. ロングテール量産</h3>
+          <ul>
+            <li>検索需要のある汎用テーマ（敬語・ビジネス・方言・名前スタンプ等）</li>
+            <li>狙いは販売そのものより<b>プレミアムの送信シェア</b></li>
+            <li>制作の型ができてから着手。0→1の段階でやると原価倒れする</li>
+            <li><b>AIのみでの制作は不可</b>（§4 参照）。必ず人の仕上げを挟む</li>
+            <li>リスク：数を打っても当たらない。工数上限を先に決める</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. 制作フロー ============ -->
+    <section>
+      <h2><span class="n">3</span>制作フロー（TO-BE）</h2>
+      <div class="legend">
+        <div class="lg-human">■ 人がやる</div>
+        <div class="lg-ai">■ AIに任せる</div>
+        <div class="lg-mix">■ 人＋AI</div>
+        <div class="lg-ng">■ 規約リスクあり・要注意</div>
+      </div>
+      <div class="flow">
+        <div class="step mix"><span class="num">1</span><span class="label">テーマ・キーワード選定</span><span class="owner-tag">担当：企画</span>
+          <div class="note">LINE STORE内の検索需要と競合セットを調査。既存の売れ筋の「言い回し」を洗い出す</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step mix"><span class="num">2</span><span class="label">キャラ設定・セリフ設計</span><span class="owner-tag">担当：企画＋AI</span>
+          <div class="note">8点なら「あいさつ／返事／感謝／謝罪／笑い／驚き／依頼／締め」で日常会話をカバーする</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step ng"><span class="num">3</span><span class="label">作画：AIで下書き → 人が仕上げ</span><span class="owner-tag">担当：デザイナー</span>
+          <div class="note">AI生成物をそのまま提出しない。人によるトレース・加筆・線と色の統一を必ず通す（§4）</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step ai"><span class="num">4</span><span class="label">規格化・書き出し</span><span class="owner-tag">担当：自動化スクリプト</span>
+          <div class="note">スタンプ画像・メイン画像・タブ画像を一括リサイズ＋透過PNG化。ここは完全自動化する</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step human"><span class="num">5</span><span class="label">申請（AI使用の申告を正確に）</span><span class="owner-tag">担当：運用</span>
+          <div class="note">販売情報の「AIの使用」欄は正直に設定する。虚偽申告は取り下げ・アカウントリスク</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step human"><span class="num">6</span><span class="label">審査 → 販売開始・導線設置</span><span class="owner-tag">担当：運用</span>
+          <div class="note">LINE STORE のリンクを動画概要欄／LINE配信／固定コメントへ。取り分が大きい経路に寄せる</div>
+        </div>
+        <div class="arrow">↓</div>
+        <div class="step mix"><span class="num">7</span><span class="label">月次レビュー</span><span class="owner-tag">担当：新町</span>
+          <div class="note">セット別の販売数・分配額・制作工数を突き合わせ、1セットあたりの利益率を更新する</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. リスク ============ -->
+    <section>
+      <h2><span class="n">4</span>リスクと対策</h2>
+      <table>
+        <tr><th>リスク</th><th>内容</th><th>対策</th></tr>
+        <tr>
+          <td><b>AI生成のみは審査対象外</b></td>
+          <td>「AIによって自動生成されたコンテンツのみで制作されたもの」は審査対象から除外され得る。加えて申請時に「AIの使用」の有無を正確に申告する義務がある</td>
+          <td>AIはラフ・アイデア出しまで。<b>人の作画工程を必ず挟み、制作過程を記録に残す</b>。申告は正直に</td>
+        </tr>
+        <tr>
+          <td>著作権・肖像権</td>
+          <td>既存キャラ・実在人物に似た絵柄、他人の素材の流用はリジェクト／取り下げ</td>
+          <td>オリジナル制作を原則に。学習元が不明瞭な生成物をそのまま納品しない。法人案件では権利帰属を契約書に明記</td>
+        </tr>
+        <tr>
+          <td>審査リジェクト全般</td>
+          <td>宗教・政治・公序良俗・過度な文字のみのスタンプ等は落ちる。再申請で時間を失う</td>
+          <td>1セット目を「学習用」と割り切って早く出し、審査の勘所を掴んでから量産に入る</td>
+        </tr>
+        <tr>
+          <td>規約・分配式の変更</td>
+          <td>2026年7月にプレミアムの計算式が変更された実績あり。前提が毎年変わる</td>
+          <td>売上をラインC（プラットフォーム依存）に寄せない。ラインA（受託）中心の構成にしておく</td>
+        </tr>
+        <tr>
+          <td>労働集約化</td>
+          <td>単価が低いため、丁寧に作るほど赤字に近づく</td>
+          <td>1セットあたりの制作工数に上限を設定（例：8点＝実働2人日）。超えたら作り方を変える</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- ============ 5. ロードマップ ============ -->
+    <section>
+      <h2><span class="n">5</span>90日ロードマップ</h2>
+      <ol class="roadmap">
+        <li><b>Day 1–14｜審査を1周する</b><br>
+          LINE Creators Market アカウント開設、銀行口座・税務の準備、利用規約と審査ガイドラインの読み合わせ。
+          自社キャラで8点セットを1本作り、申請〜審査通過まで通す。<b>目的は売上ではなくプロセスと原価の実測。</b></li>
+        <li><b>Day 15–45｜営業材料を作る</b><br>
+          自社チャンネル向けセットを販売開始し、導線を設置。同時に法人向け提案資料（実績・価格表・納期）を作成し、
+          <b>既存クライアント3社に打診</b>。ここが事業の成否を分ける。</li>
+        <li><b>Day 46–90｜1件受注して型にする</b><br>
+          法人案件を1件受注・納品し、制作フローをテンプレ化。並行してラインCを10セット上限で試行し、
+          プレミアムの分配実績を観測。90日目に §6 の基準で判断する。</li>
+      </ol>
+    </section>
+
+    <!-- ============ 6. KPIと撤退基準 ============ -->
+    <section>
+      <h2><span class="n">6</span>KPIと撤退基準</h2>
+      <table>
+        <tr><th>ライン</th><th>追うKPI</th><th>90日目の合格ライン</th></tr>
+        <tr><td>A. 法人受託</td><td>打診数／受注件数／粗利額／1件あたり実働工数</td><td class="hl">受注 1件以上・粗利10万円以上</td></tr>
+        <tr><td>B. チャンネル送客</td><td>販売セット数／登録者あたり購入率</td><td>1セット目 100個以上</td></tr>
+        <tr><td>C. 量産</td><td>公開セット数／月間分配額／1セットあたり分配額</td><td>月間分配額 5,000円以上</td></tr>
+      </table>
+      <div class="stop">
+        <b>撤退基準：</b>90日時点で「Aの受注ゼロ」かつ「Cの月間分配額が5,000円未満」なら、<b>ラインCは即停止</b>。
+        Bのみ既存チャンネルの販促施策として残し、新規事業としては畳む。
+        <b>“もう少しで当たりそう”で続けない</b>ことを、着手前に合意しておく。
+      </div>
+    </section>
+
+    <!-- ============ 7. 未確定事項 ============ -->
+    <section>
+      <h2><span class="n">7</span>着手前に決めること（未確定）</h2>
+      <table>
+        <tr><th>論点</th><th>選択肢／確認先</th></tr>
+        <tr><td>事業形態</td><td>法人名義か個人名義か。法人なら送金・税務処理、個人なら年5万円超でマイナンバー提出</td></tr>
+        <tr><td>作画リソース</td><td>社内（藤井？）／外部イラストレーター契約／案件ごとの都度発注。原価が変わるため先に決める</td></tr>
+        <tr><td>既存クライアントへの提案可否</td><td>現行の契約・取引条件でアップセルしてよいか（営業チームと要確認）</td></tr>
+        <tr><td>初期予算</td><td>AI画像生成の商用ライセンス費、外注費、90日間の人件費枠</td></tr>
+        <tr><td>画像規格の最終確認</td><td>スタンプ画像・メイン画像・タブ画像のサイズ、点数（8/16/24/32/40）、価格帯は公式ガイドラインで着手時に確認</td></tr>
+      </table>
+    </section>
+
+    <!-- ============ 出典 ============ -->
+    <section>
+      <h2><span class="n">8</span>出典（2026年8月時点）</h2>
+      <div class="sources">
+        ・<a href="https://creator.line.me/ja/terms/">LINE Creators Market 利用規約</a>（分配金の計算式）<br>
+        ・<a href="https://help2.line.me/creators/web/pc?lang=ja&contentId=200000334">Creators App ヘルプセンター：送金可能額の計算</a>（1,000円以上・集計期間）<br>
+        ・<a href="https://hujino-blog.com/bunpaikin-chigai/">分配金が38円や42円だったりする理由</a>（購入経路による差）<br>
+        ・<a href="https://note.com/urajo_stamp/n/n4c85c0c73ca8">LINEスタンププレミアムの分配金の計算式が変わるってよ</a>（2026年7月改定）<br>
+        ・<a href="https://creator.line.me/ja/review_guideline/">LINE Creators Market 審査ガイドライン</a>（AI生成物の扱い・AI使用の申告）<br>
+        <span class="memo">※規約・料率は変更されるため、着手時に必ず一次情報で再確認すること。</span>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
