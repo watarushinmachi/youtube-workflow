@@ -1,6 +1,6 @@
 # 引き継ぎメモ（トレハン部チャンネルのポジショニング再設計）
 
-最終更新: 2026-09-13（5回目） / ブランチ: `claude/torehanbui-channel-research-wqzar1`
+最終更新: 2026-09-13（6回目） / ブランチ: `claude/torehanbui-channel-research-wqzar1`
 
 ---
 
@@ -14,7 +14,9 @@
 | 4 | 競合コメント収集（API版 / yt-dlp版） | `tools/fetch_comments.py` / `tools/fetch_comments_ytdlp.py` | 完了 |
 | 5 | コメントからのインサイト抽出 | `docs/comment-insights.md` | 完了 |
 | 6 | ポジショニング案の組み直し | `docs/positioning-v2.md` | 完了・**命名とテスト1本が判断待ち** |
-| 7 | 新品／中古の市場分離の検証 | `docs/segment-split.md` | 完了・**どちらの市場を取るかが判断待ち** |
+| 7 | 新品／中古の市場分離の検証 | `docs/segment-split.md` | 完了 |
+| 8 | 脳内SEOの見立てと戦略 | `docs/strategy.md` | **これが結論。判断待ち2件** |
+| 9 | 中古側の追加収集（母数を厚くする） | `tools/fetch_used.py` | 実行中 |
 
 ---
 
