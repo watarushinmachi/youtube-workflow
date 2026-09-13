@@ -135,6 +135,9 @@ def stage_videos(args):
     pool = {**USED, **NEW}
     print(f"[1/3] uploads playlist for {len(pool)} channels")
     pls = uploads_playlist(pool)
+    if not pls:
+        sys.exit("チャンネルを1件も引けませんでした。"
+                 "APIキーが無効か、YouTube Data API v3 が有効化されていません。")
     all_vids = []
     for cid, pl in pls.items():
         v = list_uploads(pl, cap=args.scan_per_channel)
