@@ -1,6 +1,6 @@
 # 引き継ぎメモ（トレハン部チャンネルのポジショニング再設計）
 
-最終更新: 2026-09-13 / ブランチ: `claude/torehanbui-channel-research-wqzar1`
+最終更新: 2026-09-13（2回目） / ブランチ: `claude/torehanbui-channel-research-wqzar1`
 
 ---
 
@@ -11,45 +11,41 @@
 | 1 | トレハン部のチャンネル実態調査 | `docs/torehanbu-channel-research.md` | 完了 |
 | 2 | 「脳内SEO」概念の整理（共通言語づくり） | `docs/references/nounai-seo-takuto.md` | 完了 |
 | 3 | 物販界隈の第一想起マップ／ポジショニング仮説の検証 | `docs/buppan-positioning-map.md` | 完了 |
-| 4 | 競合コメント収集スクリプト | `tools/fetch_comments.py` | **実装済み・未実行** |
-| 5 | コメントからのインサイト抽出 | — | **未着手（4の実行待ち）** |
+| 4 | 競合コメント収集スクリプト（API版） | `tools/fetch_comments.py` | 実装済み・未実行（APIキー待ち） |
+| 4' | 同（APIキー不要版・yt-dlp） | `tools/fetch_comments_ytdlp.py` | 実装済み・**途中まで実行** |
+| 5 | コメントからのインサイト抽出 | `tools/analyze_comments.py` | スクリプトのみ実装。**データ待ち** |
+
+---
+
+## 4の実行ログ（2026-09-13）
+
+ローカルの yt-dlp なら APIキーなしでコメントまで取れるので、そちらで走らせた。
+
+**できたところ**
+- 22チャンネル 3,413本を一覧取得（`data/scan.json`）
+- 仕入れ企画のフィルタ（8分以上 × タイトルに仕入れ系の語）で 1,288本に絞り込み
+- うち 261本の再生数・コメント数を取得（`data/meta_cache.json`）
+
+**止まったところ**
+6並列で再生数を取りにいったところで YouTube 側の bot 判定に当たり、
+`Sign in to confirm you're not a bot` が出て以降ぜんぶ失敗するようになった。
+IP単位のブロックなので、同じ回線からは時間を置くまで yt-dlp でのアクセスができない。
+
+対策としてスクリプトは直列＋2秒待ち＋連続失敗時のクールダウンに書き換え済み。
+ブロックが解ければそのまま再開できる（`meta_cache.json` があるので取得済みの分は再取得しない）。
+
+**261本時点で見えていること**（参考値・確定ではない）
+- 再生数の上位はうみぞうの「1日密着」型が独占（688,956回 / 211,265回 / 72,335回 …）
+- トレハン部の最上位は「セカスト/オフハウスで簡単に真似できる仕入れ方法」71,821回
+- 密着系はコメントも多い（うみぞう 208件）。コメント抽出の母数として密着系が効く
+
+**残っている選択肢**
+1. YouTube Data API v3 のキーを発行する（下の手順）。ブロックと無関係に動くので確実
+2. yt-dlp のブロックが解けるのを待って直列で再開する（解除時間は不明）
 
 ---
 
 ## 次にやること：4の実行
-
-### なぜ止まっているか
-- vidIQ のクレジットが 0（次回リセット 2026-10-10 / プラン上限150）。`video_comments` は1ページ5クレジットなので、30本×全ページは構造的に賄えない
-- リモート実行環境では `www.youtube.com` が egress proxy に遮断されていた（`www.googleapis.com` は疎通OK）
-- → **YouTube Data API v3 のキーがあれば解決する**。コメント取得は1リクエスト=1クォータ、無料枠10,000/日。30本フル取得でも500未満
-
-### 手順
-
-1. Google Cloud で「YouTube Data API v3」を有効化 → APIキーを発行
-   （キーの制限は「YouTube Data API v3 のみ」に絞っておく）
-
-2. 環境変数に設定
-   ```bash
-   export YOUTUBE_API_KEY=xxxxx
-   ```
-
-3. 対象動画の選定（再生数ランキング）
-   ```bash
-   python3 tools/fetch_comments.py --stage videos
-   ```
-   → `data/candidates.json` と `data/selected_videos.json` が出る
-   → 標準では **中古20本・新品10本**、1チャンネル3本上限。比率を変えるなら
-     `--n-used 20 --n-new 10 --per-channel 3`
-
-4. コメント取得（返信スレッド込み・全ページ）
-   ```bash
-   python3 tools/fetch_comments.py --stage comments
-   ```
-   → `data/comments.jsonl` に1動画1行で保存。途中で止まっても再実行で続きから
-
-※ `data/` は `.gitignore` 済み。取得物はリポジトリに入らない。
-
----
 
 ## 5で出すもの（依頼された抽出軸）
 
