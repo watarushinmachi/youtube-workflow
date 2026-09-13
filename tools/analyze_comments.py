@@ -24,10 +24,14 @@ AXES = {
     ],
     # 2. 不信感の言語
     "distrust": [
-        r"稼げな", r"騙", r"詐欺", r"うさん", r"胡散", r"怪しい", r"信用", r"信じ",
-        r"嘘", r"ウソ", r"本当に", r"ほんとに月", r"証拠", r"スクショ", r"実績",
-        r"高額", r"情報商材", r"スクール", r"塾", r"コンサル", r"勧誘", r"煽",
-        r"儲かるのは", r"養分", r"カモ",
+        # 「本当に」「実績」「スクール」単体は称賛や中立の質問まで拾うので入れない
+        r"稼げな", r"騙", r"詐欺", r"うさん", r"胡散", r"怪しい", r"嘘", r"ウソ",
+        r"ネズミ講", r"情報商材", r"養分", r"カモ", r"煽", r"転売ヤー", r"やらせ",
+        r"仕込み", r"盛って", r"眉唾", r"信用でき", r"信じられ", r"信憑",
+        r"本当ですか", r"本当なの", r"ほんとに稼", r"本当に稼", r"証拠", r"スクショ",
+        r"いくらかかる", r"お高いん", r"高額な?(コンサル|スクール|塾|講座)",
+        r"(スクール|コンサル|塾|講座).{0,10}(いくら|値段|料金|費用|金額|高い)",
+        r"勧誘", r"回し者", r"ステマ",
     ],
     # 3. 挫折・離脱の詰まりどころ
     "stuck": [
@@ -78,14 +82,22 @@ def flatten(videos):
     out = []
     for v in videos:
         meta = {k: v[k] for k in ("videoId", "title", "channelTitle", "segment", "views")}
+        cid = v.get("channelId")
+
+        def is_host(c):
+            # API版は投稿者のチャンネルIDで、yt-dlp版はフラグで判定できる
+            if c.get("authorChannelId"):
+                return c["authorChannelId"] == cid
+            return bool(c.get("isUploader"))
+
         for t in v.get("threads", []):
             out.append({**meta, "kind": "top", "parentText": None,
                         "author": t["author"], "text": t["text"],
-                        "likes": t["likes"], "isUploader": t.get("isUploader", False)})
+                        "likes": t["likes"], "isUploader": is_host(t)})
             for r in t.get("replies", []):
                 out.append({**meta, "kind": "reply", "parentText": t["text"],
                             "author": r["author"], "text": r["text"],
-                            "likes": r["likes"], "isUploader": r.get("isUploader", False)})
+                            "likes": r["likes"], "isUploader": is_host(r)})
     return out
 
 

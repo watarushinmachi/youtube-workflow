@@ -201,12 +201,14 @@ def fetch_threads(video_id, cap_pages=30):
             top = it["snippet"]["topLevelComment"]["snippet"]
             reps = [{
                 "author": r["snippet"]["authorDisplayName"],
+                "authorChannelId": (r["snippet"].get("authorChannelId") or {}).get("value", ""),
                 "text": r["snippet"]["textDisplay"],
                 "likes": r["snippet"].get("likeCount", 0),
                 "publishedAt": r["snippet"]["publishedAt"],
             } for r in it.get("replies", {}).get("comments", [])]
             threads.append({
                 "author": top["authorDisplayName"],
+                "authorChannelId": (top.get("authorChannelId") or {}).get("value", ""),
                 "text": top["textDisplay"],
                 "likes": top.get("likeCount", 0),
                 "publishedAt": top["publishedAt"],
